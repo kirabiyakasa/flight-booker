@@ -1,0 +1,25 @@
+
+<%= form_with url: search_flights_path, html: { :class => "flight-search" },
+method: 'get', remote: true do |f| %>
+
+  <%= f.label :from_airport_id, 'From:', class: "flight-search-labels" %>
+  <%= f.collection_select :from_airport_id,
+  Airport.joins(:departing_flights).order(:id), :id, :code,
+  {:label => 'From:'} %>
+
+  <%= f.label :to_airport_id, 'To:', class: "flight-search-labels" %>
+  <%= f.collection_select :to_airport_id,
+  Airport.joins(:arriving_flights).order(:id), :id, :code,
+  {:label => 'To:'} %>
+
+  <%= f.label :passengers, 'Passengers:', class: "flight-search-labels" %>
+  <%= f.number_field :passengers, in: 1..4, class: "flight-search-fields" %>
+
+  <%= f.label :start_date, 'Date:', class: "flight-search-labels" %>
+  <%= f.select :start_date,
+  @flights.collect { |flight| flight.start_date.strftime('%d/%m/%y') } %>
+
+  <%= f.submit 'Search', class: "submit-button" %>
+<% end %>
+
+<div id="main-container"></div>

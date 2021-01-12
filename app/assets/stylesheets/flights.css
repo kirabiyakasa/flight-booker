@@ -1,0 +1,52 @@
+/* index */
+
+#search-result-container {
+  background-color: lightslategrey;
+  height: 300px;
+  width: 600px;
+  outline: 0.5px solid black;
+  text-align: center;
+  overflow: scroll;
+}
+
+.flight-container {
+  display: flex;
+  flex-direction: row-reverse;
+  color: black;
+  text-decoration: none;
+}
+
+.search-result {
+  width: 100%;
+  padding: 5px;
+  border-color: black;
+  border-style: solid;
+  border-width: 0.5px;
+  background-color: lightsteelblue;
+  font-size: 20px;
+}
+
+/* search */
+
+.flight-radios-container {
+  background-color: lightgray;
+  border-color: black;
+  border-style: solid;
+  border-width: 0.5px;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flight-label {
+  margin-right: 10px;
+  font-family: Helvetica ;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.radio-container {
+  display: flex;
+  flex-direction: row;
+}

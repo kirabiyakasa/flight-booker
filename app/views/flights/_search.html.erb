@@ -1,0 +1,22 @@
+<%= form_for @flight, method: 'get', local: true do |f| %>
+  <div id="search-result-container">
+    <% if @search_results.empty? == false %>
+      <% @search_results.each do |flight| %>
+        <div class="flight-container">
+          <div class="flight-radios-container">
+            <div class="radio-container">
+              <%= f.label :id, "Select", class: "flight-label" %>
+              <%= f.radio_button :id, "#{flight.id}", class: "radio-button" %>
+            </div>
+          </div>
+          <div class="search-result">Flight Number <%= flight.id %></div>
+        </div>
+      <% end %>
+    <% else %>
+    <% end %>
+  <%= hidden_field_tag 'passengers' , params[:passengers] %>
+  </div>
+  <div id="submit-button-container">
+    <%= f.submit 'Confirm', class: "confirm-flight" %>
+  </div>
+<% end %>
