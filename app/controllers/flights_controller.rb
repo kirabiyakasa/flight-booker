@@ -6,7 +6,8 @@ class FlightsController < ApplicationController
 
     respond_to do |format|
       if params[:flight]
-        format.html { redirect_to flight_url(params[:flight][:id],
+        format.html { redirect_to new_booking_url(
+          flight_id: params[:flight][:id],
           passengers: params[:passengers]) }
       else
         format.html
@@ -15,13 +16,9 @@ class FlightsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def search
     @flight = Flight.new
-    #@search_params = request.query_parameters
-    #@search_params[:start_date] = convert_date(@search_params[:start_date])
+
     params[:start_date] = convert_date(params[:start_date])
     @search_results = Flight.search_flights(params)
   end
@@ -33,11 +30,6 @@ class FlightsController < ApplicationController
     date[-1] = '20' + date[-1]
     date = date.reverse.join("-")
     return date
-  end
-
-  def search_params
-    params.require(:flight).permit(:start_date, :duration, :from_airport_id,
-      :to_airport_id)
   end
 
 end
