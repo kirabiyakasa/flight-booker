@@ -2,6 +2,7 @@
   <div class="flight-data-container">
     <div class="flight-id">
       <p>Flight ID: <%= @flight.id %></p>
+      <%= f.hidden_field :flight_id %>
     </div>
     <div class="flight-passengers">
       <p>Number of Passengers: <%= @passengers.count %></p>
@@ -14,12 +15,13 @@
       <p>Destination Airport: <%= @flight.to_airport.code %></p>
     </div>
   </div>
-  <% @passengers.each do |passenger| %>
-    <%= fields_for passenger, @booking.passengers do |passengers_field| %>
+    <%= f.fields_for :passengers do |passengers_field| %>
       <%= passengers_field.label :name, 'Name:' %>
       <%= passengers_field.text_field :name %>
       <%= passengers_field.label :email, 'Email:' %>
       <%= passengers_field.text_field :email %>
     <% end %>
-  <% end %>
+  <div class="submit-container">
+    <%= f.submit 'Confirm' %>
+  </div>
 <% end %>
