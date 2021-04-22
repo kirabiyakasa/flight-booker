@@ -25,6 +25,11 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
+
+        @booking.passengers.each do |passenger|
+          PassengerMailer.thank_you_email(passenger).deliver_later
+        end
+
         format.html { redirect_to(@booking,
                       :notice => 'Booking was successfully created.') }
         format.json { render :json => @booking,

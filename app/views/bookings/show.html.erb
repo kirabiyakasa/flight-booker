@@ -1,0 +1,19 @@
+<div id="main-container">
+  <h1>Booking #<%= @booking.id %></h1>
+  <div id="flight-info">
+    <h2>Flight #<%= @booking.flight.id %></h2>
+    <p>Start Date: <%= @booking.flight.start_date %></p>
+    <p>Duration: <%= @booking.flight.duration %> hours</p>
+    <p>From Airport: <%= @booking.flight.from_airport.code %></p>
+    <p>To Airport: <%= @booking.flight.to_airport.code %></p>
+  </div>
+  <div id="passengers-container">
+    <% @booking.passengers.each_with_index do |passenger, i| %>
+      <div class="passenger-info">
+        <h2>Passenger #<%= i + 1 %></h2>
+        <p>Name: <%= passenger.name %></p>
+        <p>Email: <%= passenger.email %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

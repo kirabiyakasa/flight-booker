@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you <%= @passenger.name %> for your booking.</h1>
+    <p>
+      Here is your ticket for Flight #<%= @flight.id %>.
+      Your flight is scheduled to depart at <%= @flight.start_date %>.<br>
+    </p>
+    <p>Thanks you and have a great day!</p>
+  </body>
+</html>
